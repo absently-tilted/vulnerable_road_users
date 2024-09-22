@@ -1,0 +1,28 @@
+[0.430s] Invoking command in '/home/charles/ros2_ws/src/cv_basics': PYTHONPATH=/home/charles/ros2_ws/build/cv_basics/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/charles/ros2_ws/install/cv_basics/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/cv_basics build --build-base /home/charles/ros2_ws/build/cv_basics/build install --record /home/charles/ros2_ws/build/cv_basics/install.log --single-version-externally-managed install_data
+[0.590s] running egg_info
+[0.590s] writing ../../build/cv_basics/cv_basics.egg-info/PKG-INFO
+[0.590s] writing dependency_links to ../../build/cv_basics/cv_basics.egg-info/dependency_links.txt
+[0.590s] writing entry points to ../../build/cv_basics/cv_basics.egg-info/entry_points.txt
+[0.590s] writing requirements to ../../build/cv_basics/cv_basics.egg-info/requires.txt
+[0.590s] writing top-level names to ../../build/cv_basics/cv_basics.egg-info/top_level.txt
+[0.591s] reading manifest file '../../build/cv_basics/cv_basics.egg-info/SOURCES.txt'
+[0.592s] writing manifest file '../../build/cv_basics/cv_basics.egg-info/SOURCES.txt'
+[0.592s] running build
+[0.592s] running build_py
+[0.592s] copying cv_basics/webcam_sub.py -> /home/charles/ros2_ws/build/cv_basics/build/lib/cv_basics
+[0.592s] copying cv_basics/webcam_pub.py -> /home/charles/ros2_ws/build/cv_basics/build/lib/cv_basics
+[0.592s] running install
+[0.592s] running install_lib
+[0.593s] copying /home/charles/ros2_ws/build/cv_basics/build/lib/cv_basics/webcam_sub.py -> /home/charles/ros2_ws/install/cv_basics/lib/python3.10/site-packages/cv_basics
+[0.593s] copying /home/charles/ros2_ws/build/cv_basics/build/lib/cv_basics/webcam_pub.py -> /home/charles/ros2_ws/install/cv_basics/lib/python3.10/site-packages/cv_basics
+[0.593s] byte-compiling /home/charles/ros2_ws/install/cv_basics/lib/python3.10/site-packages/cv_basics/webcam_sub.py to webcam_sub.cpython-310.pyc
+[0.593s] byte-compiling /home/charles/ros2_ws/install/cv_basics/lib/python3.10/site-packages/cv_basics/webcam_pub.py to webcam_pub.cpython-310.pyc
+[0.594s] running install_data
+[0.594s] running install_egg_info
+[0.595s] removing '/home/charles/ros2_ws/install/cv_basics/lib/python3.10/site-packages/cv_basics-0.0.0-py3.10.egg-info' (and everything under it)
+[0.595s] Copying ../../build/cv_basics/cv_basics.egg-info to /home/charles/ros2_ws/install/cv_basics/lib/python3.10/site-packages/cv_basics-0.0.0-py3.10.egg-info
+[0.596s] running install_scripts
+[0.609s] Installing img_publisher script to /home/charles/ros2_ws/install/cv_basics/lib/cv_basics
+[0.609s] Installing img_subscriber script to /home/charles/ros2_ws/install/cv_basics/lib/cv_basics
+[0.609s] writing list of installed files to '/home/charles/ros2_ws/build/cv_basics/install.log'
+[0.623s] Invoked command in '/home/charles/ros2_ws/src/cv_basics' returned '0': PYTHONPATH=/home/charles/ros2_ws/build/cv_basics/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/charles/ros2_ws/install/cv_basics/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/cv_basics build --build-base /home/charles/ros2_ws/build/cv_basics/build install --record /home/charles/ros2_ws/build/cv_basics/install.log --single-version-externally-managed install_data
