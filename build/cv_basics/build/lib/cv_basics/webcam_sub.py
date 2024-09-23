@@ -35,6 +35,8 @@ class ImageSubscriber(Node):
       
     # Used to convert between ROS and OpenCV images
     self.br = CvBridge()
+    self.model = YOLO("yolov10m.pt")
+
    
   def listener_callback(self, data):
     """
@@ -48,10 +50,9 @@ class ImageSubscriber(Node):
     
 
     # Load a pretrained YOLOv8n model
-    model = YOLO("yolov8n.pt")
 
     # Run inference on the source
-    results = model(current_frame, stream=True)  # list of Results objects
+    results = self.model(current_frame, stream=True)  # list of Results objects
     print(results)
     for result in results:
       boxes = result.boxes  # Boxes object for bounding box outputs
@@ -59,7 +60,7 @@ class ImageSubscriber(Node):
       keypoints = result.keypoints  # Keypoints object for pose outputs
       probs = result.probs  # Probs object for classification outputs
       obb = result.obb  # Oriented boxes object for OBB outputs
-      result.show()  # display to screen
+      #result.show()   display to screen
       # result.save(filename="result.jpg")  # save to disk
 
 
