@@ -61,10 +61,10 @@ class ImageSubscriber(Node):
     print(results)
     for result in results:
       boxes = result.boxes  # Boxes object for bounding box outputs
-      pdb.set_trace()
-      # pdb.set_trace()
       if (boxes.conf > 0.65) and (boxes.cls == 0):
-        self.publisher_.publish("Person detected")
+        msg = String()
+        msg.data = "Person detected"
+        self.publisher_.publish(msg)
 
       
       #result.show()   display to screen
