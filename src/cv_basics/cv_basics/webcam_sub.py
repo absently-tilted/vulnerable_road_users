@@ -9,9 +9,12 @@ import rclpy # Python library for ROS 2
 from rclpy.node import Node # Handles the creation of nodes
 from sensor_msgs.msg import Image # Image is the message type
 from cv_bridge import CvBridge # Package to convert between ROS and OpenCV Images
-import cv2 # OpenCV library
+import cv2 # OpenCV li        import time
+import lgpio
+import time
 from ultralytics import YOLO
 import pdb
+
  
 class ImageSubscriber(Node):
   """
@@ -56,10 +59,18 @@ class ImageSubscriber(Node):
     print(results)
     for result in results:
       boxes = result.boxes  # Boxes object for bounding box outputs
-      masks = result.masks  # Masks object for segmentation masks outputs
-      keypoints = result.keypoints  # Keypoints object for pose outputs
-      probs = result.probs  # Probs object for classification outputs
-      obb = result.obb  # Oriented boxes object for OBB outputs
+      pdb.set_trace()
+      # pdb.set_trace()
+      # if (boxes.conf > 0.65) and (boxes.cls == 0):
+      #   LED = 17
+      #   h = lgpio.gpiochip_open(0)
+      #   lgpio.gpio_claim_output(h, LED)
+
+      #   lgpio.gpio_write(h, LED, 1)
+      #   time.sleep(0.1)
+            
+      #   lgpio.gpio_write(h, LED, 0)
+      #   time.sleep(0.1)
       #result.show()   display to screen
       # result.save(filename="result.jpg")  # save to disk
 
