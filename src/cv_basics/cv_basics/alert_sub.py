@@ -16,7 +16,7 @@ from ultralytics import YOLO
 import pdb
 
  
-class ImageSubscriber(Node):
+class AlertSub(Node):
   """
   Create an ImageSubscriber class, which is a subclass of the Node class.
   """
@@ -38,18 +38,22 @@ class ImageSubscriber(Node):
       
     # Used to convert between ROS and OpenCV images
     self.br = CvBridge()
-    self.model = YOLO("yolov10n.pt")
 
    
   def listener_callback(self, data):
     """
     Callback function.
     """
-    # Display the message on the console
-    self.get_logger().info('Receiving alert')
- 
-    # Convert ROS Image message to OpenCV image
-    current_frame = self.br.imgmsg_to_cv2(data)
+    LED = 17
+    h = lgpio.gpiochip_open(0)
+    lgpio.gpio_claim_output(h, LED)
+
+    lgpio.gpio_write(h, LED, 1)
+    ime.sleep(0.1)
+            
+    lgpio.gpio_write(h, LED, 0)
+    time.sleep(0.1)
+
     
 
 def main(args=None):
@@ -58,15 +62,14 @@ def main(args=None):
   rclpy.init(args=args)
   
   # Create the node
-  image_subscriber = ImageSubscriber()
-  
+  alert = AlertSub()  
   # Spin the node so the callback function is called.
-  rclpy.spin(image_subscriber)
+  rclpy.spin(alert)
   
   # Destroy the node explicitly
   # (optional - otherwise it will be done automatically
   # when the garbage collector destroys the node object)
-  image_subscriber.destroy_node()
+  alert.destroy_node()
   
   # Shutdown the ROS client library for Python
   rclpy.shutdown()

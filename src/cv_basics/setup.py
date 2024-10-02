@@ -22,6 +22,7 @@ setup(
         'console_scripts': [
              'img_publisher = cv_basics.webcam_pub:main',
              'img_subscriber = cv_basics.webcam_sub:main'
+             'alert_sub = cv_basics.alert_sub:main'
         ],
     },
 )

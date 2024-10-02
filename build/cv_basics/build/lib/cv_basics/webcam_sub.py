@@ -10,7 +10,6 @@ from rclpy.node import Node # Handles the creation of nodes
 from sensor_msgs.msg import Image # Image is the message type
 from cv_bridge import CvBridge # Package to convert between ROS and OpenCV Images
 import cv2 # OpenCV li        import time
-import lgpio
 import time
 from ultralytics import YOLO
 import pdb
@@ -39,6 +38,8 @@ class ImageSubscriber(Node):
     # Used to convert between ROS and OpenCV images
     self.br = CvBridge()
     self.model = YOLO("yolov10m.pt")
+    self.publisher_ = self.create_publisher(String, 'alerts', 1)
+
 
    
   def listener_callback(self, data):
@@ -59,17 +60,12 @@ class ImageSubscriber(Node):
     print(results)
     for result in results:
       boxes = result.boxes  # Boxes object for bounding box outputs
+      pdb.set_trace()
       # pdb.set_trace()
       if (boxes.conf > 0.65) and (boxes.cls == 0):
-        LED = 17
-        h = lgpio.gpiochip_open(0)
-        lgpio.gpio_claim_output(h, LED)
+        self.publisher_.publish("Person detected")
 
-        lgpio.gpio_write(h, LED, 1)
-        time.sleep(0.1)
-            
-        lgpio.gpio_write(h, LED, 0)
-        time.sleep(0.1)
+      
       #result.show()   display to screen
       # result.save(filename="result.jpg")  # save to disk
 
