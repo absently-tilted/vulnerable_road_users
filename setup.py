@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'cv_basics'
+package_name = 'vulnerable_road_users'
 
 setup(
     name=package_name,
@@ -20,9 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-             'img_publisher = cv_basics.webcam_pub:main',
-             'img_subscriber = cv_basics.webcam_sub:main',
-             'alert_sub = cv_basics.alert_sub:main'
+             'img_publisher = vulnerable_road_users.webcam_pub:main',
+             'img_subscriber = vulnerable_road_users.webcam_sub:main',
+             'alert_sub = vulnerable_road_users.alert_sub:main'
         ],
     },
 )
