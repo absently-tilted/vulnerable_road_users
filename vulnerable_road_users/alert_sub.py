@@ -14,6 +14,7 @@ import cv2 # OpenCV li        import time
 import lgpio
 import time
 import pdb
+import pygame
 
  
 class AlertSub(Node):
@@ -44,15 +45,31 @@ class AlertSub(Node):
     """
     Callback function.
     """
-    LED = 17
-    h = lgpio.gpiochip_open(0)
-    lgpio.gpio_claim_output(h, LED)
+    pygame.mixer.init()
 
-    lgpio.gpio_write(h, LED, 1)
-    ime.sleep(0.1)
+    # LED = 17
+    # h = lgpio.gpiochip_open(0)
+    # lgpio.gpio_claim_output(h, LED)
+
+    # lgpio.gpio_write(h, LED, 1)
+    # time.sleep(0.1)
             
-    lgpio.gpio_write(h, LED, 0)
-    time.sleep(0.1)
+    # lgpio.gpio_write(h, LED, 0)
+    # time.sleep(0.1)
+
+    file = "alert.wav"
+
+      # Load the WAV file into pygame
+    pygame.mixer.music.load(file)
+
+      # Play the audio
+    pygame.mixer.music.play()
+
+      # Wait until the audio finishes playing
+    while pygame.mixer.music.get_busy():
+          pygame.time.Clock().tick(10)
+
+    print("MP3 audio playback finished.")
 
     
 

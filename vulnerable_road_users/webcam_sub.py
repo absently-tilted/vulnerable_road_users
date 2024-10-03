@@ -57,15 +57,18 @@ class ImageSubscriber(Node):
     # Load a pretrained YOLOv8n model
 
     # Run inference on the source
-    results = self.model(current_frame, stream=True)  # list of Results objects
+    results = self.model(current_frame, stream=True, classes=[0, 1])  # list of Results objects
     print(results)
     for result in results:
       boxes = result.boxes  # Boxes object for bounding box outputs
-      if (boxes.conf > 0.65) and (boxes.cls == 0):
-        msg = String()
-        msg.data = "Person detected"
-        self.publisher_.publish(msg)
-
+      try:
+        if (boxes[0].conf > 0.65) and (0 in boxes.cls or 1 in boxes.cls):
+          msg = String()
+          msg.data = "Person detected"
+          self.publisher_.publish(msg)
+      except RuntimeError:
+        pdb.set_trace()
+        
       
       #result.show()   display to screen
       # result.save(filename="result.jpg")  # save to disk
