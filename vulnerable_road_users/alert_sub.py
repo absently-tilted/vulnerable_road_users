@@ -56,6 +56,7 @@ class AlertSub(Node):
             
     lgpio.gpio_write(h, LED, 0)
     time.sleep(0.1)
+    print("LED flashed")
 
     file = "alert.wav"
 
