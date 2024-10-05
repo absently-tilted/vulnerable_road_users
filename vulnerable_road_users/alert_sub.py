@@ -45,7 +45,7 @@ class AlertSub(Node):
     """
     Callback function.
     """
-    pygame.mixer.init()
+    # pygame.mixer.init()
 
     LED = 11
     h = lgpio.gpiochip_open(0)
@@ -58,17 +58,17 @@ class AlertSub(Node):
     time.sleep(0.1)
     print("LED flashed")
 
-    file = "alert.wav"
+    # file = "alert.wav"
 
-      # Load the WAV file into pygame
-    pygame.mixer.music.load(file)
+    #   # Load the WAV file into pygame
+    # pygame.mixer.music.load(file)
 
-      # Play the audio
-    pygame.mixer.music.play()
+    #   # Play the audio
+    # pygame.mixer.music.play()
 
-      # Wait until the audio finishes playing
-    while pygame.mixer.music.get_busy():
-          pygame.time.Clock().tick(10)
+    #   # Wait until the audio finishes playing
+    # while pygame.mixer.music.get_busy():
+    #       pygame.time.Clock().tick(10)
 
     print("MP3 audio playback finished.")
 
