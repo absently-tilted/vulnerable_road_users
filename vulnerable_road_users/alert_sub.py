@@ -42,7 +42,7 @@ class AlertSub(Node):
     self.h = lgpio.gpiochip_open(0)
 
     self.LED = 17
-    lgpio.gpio_claim_output(self.h, LED)
+    lgpio.gpio_claim_output(self.h, self.LED)
 
 
 
