@@ -62,10 +62,11 @@ class ImageSubscriber(Node):
     for result in results:
       boxes = result.boxes  # Boxes object for bounding box outputs
       try:
-        if (boxes.conf[0] > 0.65) and (0 in boxes.cls or 1 in boxes.cls):
-          msg = String()
-          msg.data = "Person detected"
-          self.publisher_.publish(msg)
+        if len(boxes.conf) > 0:
+          if (boxes.conf[0] > 0.65) and (0 in boxes.cls or 1 in boxes.cls):
+            msg = String()
+            msg.data = "Person detected"
+            self.publisher_.publish(msg)
       except RuntimeError:
         pdb.set_trace()
         
