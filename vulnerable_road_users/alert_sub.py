@@ -41,7 +41,7 @@ class AlertSub(Node):
     self.br = CvBridge()
     self.h = lgpio.gpiochip_open(0)
 
-    LED = 17
+    self.LED = 17
     lgpio.gpio_claim_output(self.h, LED)
 
 
@@ -54,10 +54,10 @@ class AlertSub(Node):
     # pygame.mixer.init()
 
 
-    lgpio.gpio_write(self.h, LED, 1)
+    lgpio.gpio_write(self.h, self.LED, 1)
     time.sleep(0.1)
             
-    lgpio.gpio_write(self.h, LED, 0)
+    lgpio.gpio_write(self.h, self.LED, 0)
     time.sleep(0.1)
     print("LED flashed")
 
