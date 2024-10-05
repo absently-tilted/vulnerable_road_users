@@ -54,10 +54,10 @@ class AlertSub(Node):
     # pygame.mixer.init()
 
 
-    lgpio.gpio_write(h, LED, 1)
+    lgpio.gpio_write(self.h, LED, 1)
     time.sleep(0.1)
             
-    lgpio.gpio_write(h, LED, 0)
+    lgpio.gpio_write(self.h, LED, 0)
     time.sleep(0.1)
     print("LED flashed")
 
