@@ -38,7 +38,7 @@ class ImageSubscriber(Node):
       
     # Used to convert between ROS and OpenCV images
     self.br = CvBridge()
-    self.model = YOLO("yolov10m.pt")
+    self.model = YOLO("yolov10n.pt")
     self.publisher_ = self.create_publisher(String, 'alerts', 1)
 
 
