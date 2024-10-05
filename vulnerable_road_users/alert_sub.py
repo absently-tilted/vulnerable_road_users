@@ -47,15 +47,15 @@ class AlertSub(Node):
     """
     pygame.mixer.init()
 
-    # LED = 17
-    # h = lgpio.gpiochip_open(0)
-    # lgpio.gpio_claim_output(h, LED)
+    LED = 17
+    h = lgpio.gpiochip_open(0)
+    lgpio.gpio_claim_output(h, LED)
 
-    # lgpio.gpio_write(h, LED, 1)
-    # time.sleep(0.1)
+    lgpio.gpio_write(h, LED, 1)
+    time.sleep(0.1)
             
-    # lgpio.gpio_write(h, LED, 0)
-    # time.sleep(0.1)
+    lgpio.gpio_write(h, LED, 0)
+    time.sleep(0.1)
 
     file = "alert.wav"
 
