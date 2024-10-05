@@ -51,7 +51,7 @@ class AlertSub(Node):
     """
     Callback function.
     """
-     pygame.mixer.init()
+    pygame.mixer.init()
 
 
     lgpio.gpio_write(self.h, self.LED, 1)
