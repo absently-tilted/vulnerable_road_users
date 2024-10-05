@@ -47,7 +47,7 @@ class AlertSub(Node):
     """
     pygame.mixer.init()
 
-    LED = 17
+    LED = 11
     h = lgpio.gpiochip_open(0)
     lgpio.gpio_claim_output(h, LED)
 
