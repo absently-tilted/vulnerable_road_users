@@ -34,6 +34,8 @@ class ImageSubscriber(Node):
       'video_frames', 
       self.listener_callback, 
       10)
+    
+    self.publisher2 = self.create_publisher(Image, 'yolo_output', 10)
     self.subscription # prevent unused variable warning
       
     # Used to convert between ROS and OpenCV images
@@ -61,12 +63,16 @@ class ImageSubscriber(Node):
     print(results)
     for result in results:
       boxes = result.boxes  # Boxes object for bounding box outputs
+      result.save()
+      plot = result.plot()
+      msg_plot = self.br.cv2_to_imgmsg(plot, encoding='bgr8')
       try:
         if len(boxes.conf) > 0:
           if (boxes.conf[0] > 0.65) and (0 in boxes.cls or 1 in boxes.cls):
             msg = String()
             msg.data = "Person detected"
             self.publisher_.publish(msg)
+            self.publisher2.publish(msg_plot)
       except RuntimeError:
         pdb.set_trace()
         
