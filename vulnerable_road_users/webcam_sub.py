@@ -63,7 +63,7 @@ class ImageSubscriber(Node):
     print(results)
     for result in results:
       boxes = result.boxes  # Boxes object for bounding box outputs
-      result.save()
+      # result.save()
       plot = result.plot()
       msg_plot = self.br.cv2_to_imgmsg(plot, encoding='bgr8')
       try:
