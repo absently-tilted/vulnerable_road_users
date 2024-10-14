@@ -10,14 +10,16 @@ from rclpy.node import Node # Handles the creation of nodes
 from sensor_msgs.msg import Image # Image is the message type
 from std_msgs.msg import String
 from cv_bridge import CvBridge # Package to convert between ROS and OpenCV Images
-import cv2 # OpenCV li        import time
-import lgpio
+import cv2 # OpenCV li        
+import time
+# import lgpio
 import time
 import pdb
-import pygame
+# import pygame
+from playsound import playsound
 
  
-class AlertSub(Node):
+class AlertAudio(Node):
   """
   Create an ImageSubscriber class, which is a subclass of the Node class.
   """
@@ -26,7 +28,7 @@ class AlertSub(Node):
     Class constructor to set up the node
     """
     # Initiate the Node class's constructor and give it a name
-    super().__init__('alert_subscriber')
+    super().__init__('alert_audio')
       
     # Create the subscriber. This subscriber will receive an Image
     # from the video_frames topic. The queue size is 10 messages.
@@ -34,15 +36,15 @@ class AlertSub(Node):
       String, 
       'alerts', 
       self.listener_callback, 
-      10)
+      1)
     self.subscription # prevent unused variable warning
       
     # Used to convert between ROS and OpenCV images
     self.br = CvBridge()
-    self.h = lgpio.gpiochip_open(0)
+    # self.h = lgpio.gpiochip_open(0)
 
-    self.LED = 17
-    lgpio.gpio_claim_output(self.h, self.LED)
+    # self.LED = 17
+    # lgpio.gpio_claim_output(self.h, self.LED)
 
 
 
@@ -51,30 +53,32 @@ class AlertSub(Node):
     """
     Callback function.
     """
-    pygame.mixer.init()
+    # pygame.mixer.init()
 
 
-    lgpio.gpio_write(self.h, self.LED, 1)
-    time.sleep(0.1)
+    # lgpio.gpio_write(self.h, self.LED, 1)
+    # time.sleep(0.1)
             
-    lgpio.gpio_write(self.h, self.LED, 0)
-    time.sleep(0.1)
-    print("LED flashed")
+    # lgpio.gpio_write(self.h, self.LED, 0)
+    # time.sleep(0.1)
+    # print("LED flashed")
 
     file = "alert.wav"
+    playsound(file)
+    time.sleep(3)
 
-      # Load the WAV file into pygame
-    pygame.mixer.music.load(file)
+    #   # Load the WAV file into pygame
+    # pygame.mixer.music.load(file)
 
-      # Play the audio
-    pygame.mixer.music.play()
+    #   # Play the audio
+    # pygame.mixer.music.play()
 
-      # Wait until the audio finishes playing
-    while pygame.mixer.music.get_busy():
-          pygame.time.Clock().tick(10)
+    #   # Wait until the audio finishes playing
+    # while pygame.mixer.music.get_busy():
+    #       pygame.time.Clock().tick(10)
 
     print("MP3 audio playback finished.")
-    rclpy.sleep(5)
+    # rclpy.sleep(5)
 
     
 
@@ -84,7 +88,7 @@ def main(args=None):
   rclpy.init(args=args)
   
   # Create the node
-  alert = AlertSub()  
+  alert = AlertAudio()  
   # Spin the node so the callback function is called.
   rclpy.spin(alert)
   

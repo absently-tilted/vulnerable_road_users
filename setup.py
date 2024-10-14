@@ -22,7 +22,9 @@ setup(
         'console_scripts': [
              'img_publisher = vulnerable_road_users.webcam_pub:main',
              'img_subscriber = vulnerable_road_users.webcam_sub:main',
-             'alert_sub = vulnerable_road_users.alert_sub:main'
+             'alert_light = vulnerable_road_users.alert_light:main',
+             'alert_audio = vulnerable_road_users.alert_audio:main'
+
         ],
     },
 )
