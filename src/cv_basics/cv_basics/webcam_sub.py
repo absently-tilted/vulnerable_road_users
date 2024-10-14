@@ -57,7 +57,7 @@ class ImageSubscriber(Node):
     # Load a pretrained YOLOv8n model
 
     # Run inference on the source
-    results = self.model(current_frame, stream=True)  # list of Results objects
+    results = self.model(current_frame, stream=True, classes=[0, 1])  # list of Results objects
     print(results)
     for result in results:
       boxes = result.boxes  # Boxes object for bounding box outputs
