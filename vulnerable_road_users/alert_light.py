@@ -86,7 +86,7 @@ def main(args=None):
   rclpy.init(args=args)
   
   # Create the node
-  alert = AlertSub()  
+  alert = AlertLight()  
   # Spin the node so the callback function is called.
   rclpy.spin(alert)
   
