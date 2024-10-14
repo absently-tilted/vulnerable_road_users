@@ -74,6 +74,7 @@ class AlertSub(Node):
           pygame.time.Clock().tick(10)
 
     print("MP3 audio playback finished.")
+    rclpy.sleep(5)
 
     
 

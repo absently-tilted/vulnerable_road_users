@@ -33,7 +33,7 @@ class ImageSubscriber(Node):
       Image, 
       'video_frames', 
       self.listener_callback, 
-      10)
+      1)
     
     self.publisher2 = self.create_publisher(Image, 'yolo_output', 10)
     self.subscription # prevent unused variable warning
