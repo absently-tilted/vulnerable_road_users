@@ -63,9 +63,9 @@ class AlertAudio(Node):
     # time.sleep(0.1)
     # print("LED flashed")
 
-    file = "alert.wav"
+    file = "alert.mp3"
     playsound(file)
-    time.sleep(3)
+    time.sleep(2)
 
     #   # Load the WAV file into pygame
     # pygame.mixer.music.load(file)

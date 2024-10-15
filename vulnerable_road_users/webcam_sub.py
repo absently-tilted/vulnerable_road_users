@@ -35,12 +35,12 @@ class ImageSubscriber(Node):
       self.listener_callback, 
       1)
     
-    self.publisher2 = self.create_publisher(Image, 'yolo_output', 1)
+    self.publisher2 = self.create_publisher(Image, 'yolo_output', 10)
     self.subscription # prevent unused variable warning
       
     # Used to convert between ROS and OpenCV images
     self.br = CvBridge()
-    self.model = YOLO("yolov10n.pt")
+    self.model = YOLO("yolov10m.pt")
     # self.model.to('cuda')
     self.publisher_ = self.create_publisher(String, 'alerts', 1)
 
@@ -69,11 +69,13 @@ class ImageSubscriber(Node):
       msg_plot = self.br.cv2_to_imgmsg(plot, encoding='bgr8')
       try:
         if len(boxes.conf) > 0:
-          if (boxes.conf[0] > 0.65) and (0 in boxes.cls or 1 in boxes.cls):
-            msg = String()
-            msg.data = "Person detected"
-            self.publisher_.publish(msg)
-            self.publisher2.publish(msg_plot)
+          print(boxes.conf)
+          for i in boxes.conf:
+            if i > 0.1:
+              msg = String()
+              msg.data = "Person detected"
+              self.publisher_.publish(msg)
+              self.publisher2.publish(msg_plot)
       except RuntimeError:
         pdb.set_trace()
         
