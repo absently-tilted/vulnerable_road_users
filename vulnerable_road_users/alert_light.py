@@ -17,8 +17,7 @@ import time
 import time
 import pdb
 import lgpio
-# import pygame
-from playsound import playsound
+
 
  
 class AlertLight(Node):
